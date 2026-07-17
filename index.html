@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- This is a proposal/demo site made to offer to the business. It is shared
+     directly with the owner, not meant to rank as their official site, so we
+     keep it out of search indexes. -->
+<meta name="robots" content="noindex, nofollow" />
+<title>Ritika Beauty Lounge — Bridal & Beauty Studio in Panipat</title>
+<meta name="description" content="Ritika Beauty Lounge, Krishanpura, Panipat. Women-owned bridal & beauty studio. 5.0★ on Google, 270+ brides since 2019. Bridal, party & HD makeup, hair, nails, mehendi & more." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#fbf5f0; --blush:#f6dde1; --rose:#d98a9a; --rose-deep:#c06b7e;
+    --wine:#5a2138; --wine-ink:#3d1626; --gold:#c9a24b; --gold-lt:#e6c878;
+    --rosegold:#c08a86; --ink:#2c1a22; --muted:#7a5c66; --white:#ffffff;
+    --shadow:0 24px 60px -24px rgba(90,33,56,.45);
+    --shadow-sm:0 10px 30px -16px rgba(90,33,56,.4);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Poppins',system-ui,sans-serif;
+    --script:'Great Vibes',cursive;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:var(--sans); color:var(--ink);
+    background:
+      radial-gradient(1200px 800px at 15% -5%, #ffe9ec 0%, transparent 55%),
+      radial-gradient(1100px 900px at 100% 10%, #f3e2d4 0%, transparent 50%),
+      radial-gradient(1000px 1000px at 50% 120%, #eccdd6 0%, transparent 55%),
+      linear-gradient(180deg,#fbf5f0 0%,#f7e9ea 40%,#f3ddd9 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  #bg{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+  .vignette{position:fixed; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(61,22,38,.18) 100%)}
+  .grain{position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.04; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  main{position:relative; z-index:2}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:fixed; top:0; left:0; right:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px clamp(18px,5vw,54px); transition:.4s ease;
+    background:linear-gradient(180deg,rgba(251,245,240,.0),rgba(251,245,240,0))}
+  header.nav.scrolled{background:rgba(251,245,240,.78); backdrop-filter:blur(14px);
+    box-shadow:0 8px 30px -22px rgba(90,33,56,.55); padding-top:12px; padding-bottom:12px}
+  .brand{display:flex; flex-direction:column; line-height:1; text-decoration:none; color:var(--wine)}
+  .brand b{font-family:var(--serif); font-weight:600; font-size:clamp(18px,2.2vw,23px); letter-spacing:.5px}
+  .brand span{font-family:var(--sans); font-weight:400; font-size:10px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--rose-deep); margin-top:3px}
+  nav.links{display:flex; align-items:center; gap:26px}
+  nav.links a{font-size:13.5px; letter-spacing:.4px; text-decoration:none; color:var(--wine);
+    opacity:.82; transition:.2s; position:relative}
+  nav.links a:hover{opacity:1}
+  nav.links a.nolink::after{content:''; position:absolute; left:0; bottom:-6px; height:1.5px; width:0;
+    background:var(--gold); transition:.25s}
+  nav.links a.nolink:hover::after{width:100%}
+  .btn{display:inline-flex; align-items:center; gap:9px; border:none; cursor:pointer;
+    font-family:var(--sans); font-weight:500; font-size:13.5px; letter-spacing:.3px;
+    padding:11px 20px; border-radius:100px; text-decoration:none; transition:.25s; white-space:nowrap}
+  .btn-gold{background:linear-gradient(120deg,var(--gold-lt),var(--gold));
+    color:var(--wine-ink); box-shadow:0 12px 26px -12px rgba(201,162,75,.85)}
+  .btn-gold:hover{transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(201,162,75,.95)}
+  .btn-wine{background:linear-gradient(120deg,var(--wine),var(--wine-ink)); color:#fff}
+  .btn-wine:hover{transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.5); color:var(--wine); border:1px solid rgba(122,92,102,.35)}
+  .btn-ghost:hover{background:#fff}
+  .wa-ico{width:16px; height:16px; display:inline-block; fill:currentColor}
+
+  /* ---------- HERO ---------- */
+  section{position:relative}
+  .hero{min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; text-align:center; padding:120px 22px 80px}
+  .hero .eyebrow{font-size:12px; letter-spacing:5px; text-transform:uppercase;
+    color:var(--rose-deep); margin-bottom:18px}
+  .hero .script{font-family:var(--script); font-size:clamp(26px,5vw,46px); color:var(--gold);
+    line-height:1; margin-bottom:-6px; opacity:.95}
+  .hero h1{font-family:var(--serif); font-weight:600; color:var(--wine-ink);
+    font-size:clamp(46px,9vw,104px); line-height:.98; margin:6px 0 4px; letter-spacing:.5px}
+  .hero h1 .thin{display:block; font-weight:400; font-style:italic; color:var(--rose-deep);
+    font-size:.42em; letter-spacing:2px; margin-top:10px}
+  .hero p.lede{max-width:600px; margin:22px auto 0; font-size:clamp(15px,1.9vw,18px);
+    line-height:1.7; color:var(--muted)}
+  .cta{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:34px}
+  .trust{display:flex; flex-wrap:wrap; gap:14px 30px; justify-content:center; margin-top:40px}
+  .trust .t{display:flex; flex-direction:column; align-items:center; min-width:96px}
+  .trust .t b{font-family:var(--serif); font-size:30px; color:var(--wine); line-height:1}
+  .trust .t span{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-top:6px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:20px}
+  .scrollcue{position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); opacity:.7}
+  .scrollcue::after{content:''; display:block; width:1px; height:34px; margin:10px auto 0;
+    background:linear-gradient(var(--rose),transparent); animation:cue 1.8s infinite}
+  @keyframes cue{0%{opacity:0; transform:scaleY(.3)}50%{opacity:1}100%{opacity:0; transform:scaleY(1) translateY(6px)}}
+
+  /* ---------- GENERIC SECTION ---------- */
+  .wrap{max-width:1120px; margin:0 auto; padding:clamp(70px,10vw,120px) clamp(20px,5vw,40px)}
+  .kicker{font-size:12px; letter-spacing:4px; text-transform:uppercase; color:var(--rose-deep);
+    text-align:center; margin-bottom:12px}
+  .headline{font-family:var(--serif); font-weight:600; color:var(--wine-ink); text-align:center;
+    font-size:clamp(32px,5vw,54px); line-height:1.05; margin:0 auto 18px; max-width:14ch}
+  .sub{max-width:640px; margin:0 auto 54px; text-align:center; color:var(--muted);
+    font-size:clamp(14.5px,1.7vw,17px); line-height:1.75}
+
+  .reveal{opacity:0; transform:translateY(34px); transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+  .card{background:rgba(255,255,255,.62); backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.7); border-radius:22px; box-shadow:var(--shadow-sm)}
+
+  /* ---------- ABOUT ---------- */
+  .about{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(30px,5vw,64px); align-items:center}
+  .about .portrait{position:relative; aspect-ratio:4/5; border-radius:26px; overflow:hidden;
+    box-shadow:var(--shadow); background:
+      radial-gradient(120% 90% at 30% 10%, #ffd9df 0%, transparent 60%),
+      linear-gradient(150deg,#e7b3bf 0%,#c07d90 45%,#5a2138 100%)}
+  .about .portrait .mono{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--script); font-size:clamp(90px,16vw,180px); color:rgba(255,255,255,.9);
+    text-shadow:0 10px 40px rgba(61,22,38,.5)}
+  .about .portrait .tag{position:absolute; left:18px; bottom:18px; right:18px;
+    display:flex; justify-content:space-between; align-items:flex-end; color:#fff}
+  .about .portrait .tag b{font-family:var(--serif); font-size:22px}
+  .about .portrait .tag span{font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.85}
+  .about h3{font-family:var(--serif); font-weight:600; font-size:clamp(26px,3.4vw,38px);
+    color:var(--wine-ink); margin:0 0 16px; line-height:1.1}
+  .about p{color:var(--muted); line-height:1.85; margin:0 0 16px; font-size:15.5px}
+  .about .signature{font-family:var(--script); font-size:34px; color:var(--rose-deep); margin-top:8px}
+  .chips{display:flex; flex-wrap:wrap; gap:9px; margin:22px 0 4px}
+  .chip{font-size:12px; letter-spacing:.5px; padding:7px 14px; border-radius:100px;
+    background:rgba(216,138,154,.16); color:var(--wine); border:1px solid rgba(216,138,154,.3)}
+
+  /* ---------- SERVICES ---------- */
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  .svc{padding:30px 26px; border-radius:22px; transition:.35s; position:relative; overflow:hidden}
+  .svc:hover{transform:translateY(-6px); box-shadow:var(--shadow)}
+  .svc .ic{width:52px; height:52px; border-radius:15px; display:grid; place-items:center; font-size:26px;
+    background:linear-gradient(135deg,#fff0f2,#f3d3da); margin-bottom:18px;
+    box-shadow:inset 0 0 0 1px rgba(216,138,154,.35)}
+  .svc h4{font-family:var(--serif); font-weight:600; font-size:22px; color:var(--wine-ink); margin:0 0 8px}
+  .svc p{color:var(--muted); font-size:14px; line-height:1.65; margin:0 0 14px}
+  .svc .price{font-size:13px; font-weight:500; color:var(--rose-deep); letter-spacing:.3px}
+  .svc .price span{color:var(--muted); font-weight:400}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:16px}
+  .gitem{border-radius:20px; overflow:hidden; position:relative; box-shadow:var(--shadow-sm);
+    display:flex; align-items:flex-end; padding:18px; color:#fff; transition:.4s}
+  .gitem:hover{transform:scale(1.02)}
+  .gitem b{font-family:var(--serif); font-size:20px; position:relative; z-index:2; text-shadow:0 4px 20px rgba(61,22,38,.6)}
+  .gitem::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(61,22,38,.55))}
+  .g1{grid-column:span 2; grid-row:span 2; background:radial-gradient(120% 120% at 20% 10%,#ffd9df,transparent 55%),linear-gradient(150deg,#d98a9a,#5a2138)}
+  .g2{background:linear-gradient(150deg,#e9c1a0,#b56b6b)}
+  .g3{background:linear-gradient(150deg,#f0cdd6,#a4506a)}
+  .g4{grid-column:span 2; background:radial-gradient(120% 120% at 80% 20%,#ffe6cf,transparent 55%),linear-gradient(120deg,#caa05e,#7a3b52)}
+  .g5{background:linear-gradient(150deg,#e7b7c4,#7a2f49)}
+  .g6{background:linear-gradient(150deg,#d9a7b2,#5a2138)}
+  .gnote{text-align:center; font-size:12px; color:var(--muted); margin-top:18px; letter-spacing:.3px}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-head{display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:44px}
+  .bigrate{font-family:var(--serif); font-size:70px; color:var(--wine); line-height:1}
+  .rev-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  .rev{padding:30px 28px; border-radius:22px}
+  .rev .q{font-family:var(--serif); font-size:40px; color:var(--rose); line-height:0; margin-bottom:8px; display:block; height:22px}
+  .rev p{color:var(--ink); font-size:15px; line-height:1.7; margin:0 0 20px; font-style:italic}
+  .rev .who{display:flex; align-items:center; gap:12px}
+  .rev .av{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; color:#fff;
+    font-weight:600; font-family:var(--serif); font-size:18px; background:linear-gradient(135deg,var(--rose),var(--wine))}
+  .rev .who b{display:block; font-size:14px; color:var(--wine-ink); font-weight:600}
+  .rev .who span{font-size:12px; color:var(--muted)}
+  .rev .g-src{margin-left:auto; font-size:11px; color:var(--muted); letter-spacing:.5px}
+
+  /* ---------- OFFER ---------- */
+  .offer{max-width:1120px; margin:0 auto; padding:0 clamp(20px,5vw,40px)}
+  .offer .inner{border-radius:26px; padding:clamp(34px,5vw,58px); text-align:center; position:relative; overflow:hidden;
+    background:linear-gradient(120deg,var(--wine),var(--wine-ink)); color:#fff; box-shadow:var(--shadow)}
+  .offer .inner::before{content:''; position:absolute; inset:0;
+    background:radial-gradient(600px 300px at 90% -20%, rgba(201,162,75,.4), transparent 60%),
+              radial-gradient(500px 300px at 0% 120%, rgba(216,138,154,.35), transparent 60%)}
+  .offer .k{position:relative; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:var(--gold-lt)}
+  .offer h3{position:relative; font-family:var(--serif); font-weight:600; font-size:clamp(28px,4.4vw,46px); margin:12px 0 10px}
+  .offer p{position:relative; opacity:.85; max-width:520px; margin:0 auto 26px; line-height:1.7}
+
+  /* ---------- VISIT ---------- */
+  .visit{display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,44px); align-items:stretch}
+  .visit .info{padding:clamp(30px,4vw,44px); border-radius:24px}
+  .visit h3{font-family:var(--serif); font-weight:600; font-size:32px; color:var(--wine-ink); margin:0 0 24px}
+  .vrow{display:flex; gap:15px; padding:15px 0; border-bottom:1px solid rgba(122,92,102,.16)}
+  .vrow:last-child{border-bottom:none}
+  .vrow .vi{width:40px; height:40px; border-radius:12px; flex:none; display:grid; place-items:center; font-size:19px;
+    background:linear-gradient(135deg,#fff0f2,#f3d3da)}
+  .vrow b{display:block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose-deep); margin-bottom:3px}
+  .vrow p{margin:0; color:var(--ink); font-size:15px; line-height:1.55}
+  .vrow a{color:var(--wine); text-decoration:none; border-bottom:1px solid rgba(90,33,56,.3)}
+  .mapcard{border-radius:24px; overflow:hidden; position:relative; min-height:340px; box-shadow:var(--shadow);
+    display:flex; align-items:flex-end; padding:26px; color:#fff;
+    background:
+      radial-gradient(140% 120% at 20% 0%, #f3d3da 0%, transparent 45%),
+      linear-gradient(150deg,#c07d90 0%,#5a2138 60%,#3d1626 100%)}
+  .mapcard .grid-lines{position:absolute; inset:0; opacity:.18;
+    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:40px 40px}
+  .mapcard .pin{position:absolute; top:44%; left:52%; transform:translate(-50%,-50%); text-align:center}
+  .mapcard .pin .dot{width:18px; height:18px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+    background:var(--gold); margin:0 auto 6px; box-shadow:0 0 0 8px rgba(201,162,75,.25),0 10px 20px rgba(0,0,0,.3)}
+  .mapcard .m-b{position:relative; z-index:2}
+  .mapcard .m-b b{font-family:var(--serif); font-size:22px; display:block}
+  .mapcard .m-b span{font-size:12.5px; opacity:.85}
+
+  /* ---------- FOOTER ---------- */
+  footer{position:relative; z-index:2; text-align:center; padding:60px 22px 40px; color:var(--wine)}
+  footer .fbrand{font-family:var(--serif); font-size:30px; color:var(--wine-ink); margin-bottom:6px}
+  footer .fsub{font-family:var(--script); font-size:26px; color:var(--gold); margin-bottom:20px}
+  footer .fsoc{display:flex; gap:14px; justify-content:center; margin-bottom:22px}
+  footer .fsoc a{width:42px; height:42px; border-radius:50%; display:grid; place-items:center;
+    background:rgba(255,255,255,.6); color:var(--wine); text-decoration:none; transition:.25s; box-shadow:var(--shadow-sm)}
+  footer .fsoc a:hover{transform:translateY(-3px); background:#fff}
+  footer .fmeta{font-size:12.5px; color:var(--muted); line-height:1.8}
+  footer .fmeta a{color:var(--rose-deep); text-decoration:none}
+
+  /* ---------- FLOATING WA ---------- */
+  .fab{position:fixed; right:20px; bottom:20px; z-index:30; width:58px; height:58px; border-radius:50%;
+    background:#25d366; display:grid; place-items:center; box-shadow:0 14px 30px -8px rgba(37,211,102,.7);
+    transition:.25s; animation:pop .5s .8s both}
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:30px; height:30px; fill:#fff}
+  @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    nav.links a.nolink{display:none}
+    .about{grid-template-columns:1fr}
+    .about .portrait{max-width:420px; margin:0 auto; order:-1}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .g1{grid-column:span 2}.g4{grid-column:span 2}
+    .rev-grid{grid-template-columns:1fr}
+    .visit{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .cta{flex-direction:column; width:100%; max-width:320px}
+    .cta .btn{justify-content:center}
+    .trust{gap:12px 22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{transition:none; opacity:1; transform:none}
+    .scrollcue::after{animation:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Ritika Beauty Lounge home">
+    <b>Ritika Beauty Lounge</b><span>Panipat · Est. 2019</span>
+  </a>
+  <nav class="links" aria-label="Primary">
+    <a class="nolink" href="#about">About</a>
+    <a class="nolink" href="#services">Services</a>
+    <a class="nolink" href="#reviews">Reviews</a>
+    <a class="nolink" href="#visit">Visit</a>
+    <a class="btn btn-gold" href="https://wa.me/919354918002?text=Hi%20Ritika%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Ritika%20Beauty%20Lounge." target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.87 11.87 0 010 5.94 11.94 11.94 0 0111.94 0 11.94 11.94 0 0124 5.95a11.94 11.94 0 01-17.9 10.3L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.04 1.38A9.92 9.92 0 0022 5.95 9.9 9.9 0 0011.94 2 9.92 9.92 0 003.3 16.9l.24.38-1 3.65 4.06-.8z"/><path d="M9.1 6.4c-.22-.5-.46-.5-.67-.51h-.57a1.1 1.1 0 00-.8.37 3.35 3.35 0 00-1.04 2.5 5.83 5.83 0 001.22 3.08c.15.2 2.1 3.36 5.2 4.58 2.57 1 3.1.8 3.66.75.56-.05 1.8-.73 2.05-1.45.26-.7.26-1.32.18-1.44-.07-.13-.27-.2-.57-.35s-1.8-.9-2.07-1c-.28-.1-.48-.15-.68.15-.2.3-.78.99-.95 1.19-.18.2-.35.22-.65.07a8.24 8.24 0 01-2.44-1.5 9.1 9.1 0 01-1.68-2.1c-.18-.3 0-.47.13-.62.13-.13.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52C10.1 8.72 9.4 7 9.1 6.4z"/></svg>
+      Book Now
+    </a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="script reveal in">where every face</div>
+    <div class="eyebrow reveal in" style="transition-delay:.05s">women-owned bridal &amp; beauty studio</div>
+    <h1 class="reveal in" style="transition-delay:.1s">Ritika Beauty<br>Lounge<span class="thin">Panipat · Krishanpura</span></h1>
+    <p class="lede reveal in" style="transition-delay:.2s">Flawless bridal, party &amp; HD makeup, hair, nails and more,
+      crafted by <b>Ritika</b> for over <b>270 brides</b> since 2019, and rated a perfect
+      <b>5.0★</b> by 139 happy clients on Google.</p>
+    <div class="cta reveal in" style="transition-delay:.3s">
+      <a class="btn btn-gold" href="https://wa.me/919354918002?text=Hi%20Ritika%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Ritika%20Beauty%20Lounge." target="_blank" rel="noopener">
+        <svg class="wa-ico" viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.87 11.87 0 010 5.94 11.94 11.94 0 0111.94 0 11.94 11.94 0 0124 5.95a11.94 11.94 0 01-17.9 10.3L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.04 1.38A9.92 9.92 0 0022 5.95 9.9 9.9 0 0011.94 2 9.92 9.92 0 003.3 16.9l.24.38-1 3.65 4.06-.8z"/></svg>
+        Book on WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:+919354918002">Call +91 93549 18002</a>
+    </div>
+    <div class="trust reveal in" style="transition-delay:.4s">
+      <div class="t"><span class="stars">★★★★★</span><span>5.0 · 139 Google reviews</span></div>
+      <div class="t"><b>270+</b><span>Brides styled</span></div>
+      <div class="t"><b>2019</b><span>Serving Panipat</span></div>
+      <div class="t"><b>13+</b><span>Beauty services</span></div>
+    </div>
+    <div class="scrollcue">scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="portrait reveal">
+        <div class="mono">R</div>
+        <div class="tag"><b>Ritika</b><span>Founder &amp; Lead Artist</span></div>
+      </div>
+      <div>
+        <p class="kicker reveal" style="text-align:left">The Artist</p>
+        <h3 class="reveal d1">A perfect-5 studio, built one beautiful face at a time.</h3>
+        <p class="reveal d1">Since 2019, Ritika has turned a small studio in Krishanpura into one of
+          Panipat's most-loved names in bridal and beauty. Over <b>270 brides</b> have trusted her on
+          the biggest day of their lives, and it shows in a spotless <b>5.0-star</b> rating across
+          139 Google reviews.</p>
+        <p class="reveal d2">Warm, unhurried and endlessly precise, Ritika designs a look around <em>you</em>:
+          your features, your outfit, your day, whether that's a full airbrush bridal, a quick party
+          glam, or a relaxing hair spa. It's a proudly <b>women-owned</b> space where everyone is welcome.</p>
+        <div class="chips reveal d3">
+          <span class="chip">Women-owned</span>
+          <span class="chip">Everyone welcome</span>
+          <span class="chip">Premium products</span>
+          <span class="chip">Bridal specialist</span>
+          <span class="chip">Makeup academy</span>
+        </div>
+        <div class="signature reveal d3">— Ritika</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <p class="kicker reveal">What we do</p>
+      <h2 class="headline reveal d1">Everything for your big day &amp; every day</h2>
+      <p class="sub reveal d2">One studio for the whole look, from a full bridal transformation to a
+        fresh set of nails. Prices below are starting points; message us for a package tailored to you.</p>
+      <div class="grid">
+        <div class="svc card reveal">
+          <div class="ic">👰</div><h4>Bridal Makeup</h4>
+          <p>Your signature wedding look in HD or airbrush, with draping and hairstyling, made to last from
+            first light to the last dance.</p>
+          <div class="price">From ₹10,000 <span>· full bridal</span></div>
+        </div>
+        <div class="svc card reveal d1">
+          <div class="ic">💍</div><h4>Pre-Bridal &amp; Engagement</h4>
+          <p>Glow-up sittings and a radiant engagement look, planned in the weeks before your ceremonies.</p>
+          <div class="price">Custom packages</div>
+        </div>
+        <div class="svc card reveal d2">
+          <div class="ic">✨</div><h4>Party &amp; Guest Makeup</h4>
+          <p>Camera-ready glam for functions, receptions and shoots. Soft, natural or full drama, your call.</p>
+          <div class="price">From ₹1,500 <span>· per look</span></div>
+        </div>
+        <div class="svc card reveal">
+          <div class="ic">🎨</div><h4>HD &amp; Airbrush</h4>
+          <p>Featherlight, long-wear finishes that read flawless in person and in every photograph.</p>
+          <div class="price">Add-on to any look</div>
+        </div>
+        <div class="svc card reveal d1">
+          <div class="ic">💇‍♀️</div><h4>Hair &amp; Hair Spa</h4>
+          <p>Blow-dry, bridal hairstyling, head-wash and deep-conditioning hair-spa treatments.</p>
+          <div class="price">Monsoon offer on now</div>
+        </div>
+        <div class="svc card reveal d2">
+          <div class="ic">💅</div><h4>Nails &amp; Nail Art</h4>
+          <p>Manicures, gel and custom nail art to finish the look from fingertip to face.</p>
+          <div class="price">Walk-in &amp; booked</div>
+        </div>
+        <div class="svc card reveal">
+          <div class="ic">🌿</div><h4>Mehendi &amp; Draping</h4>
+          <p>Intricate bridal &amp; party mehendi and expert saree/lehenga draping for the full occasion.</p>
+          <div class="price">Occasion packages</div>
+        </div>
+        <div class="svc card reveal d1">
+          <div class="ic">🧖‍♀️</div><h4>Facials &amp; Waxing</h4>
+          <p>Skin-prep facials, clean-ups and waxing so you feel fresh long before the big event.</p>
+          <div class="price">Studio menu</div>
+        </div>
+        <div class="svc card reveal d2">
+          <div class="ic">🎓</div><h4>Makeup Academy</h4>
+          <p>Learn the craft with Ritika through hands-on makeup courses for aspiring artists in Panipat.</p>
+          <div class="price">Enrolments open</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="work">
+    <div class="wrap">
+      <p class="kicker reveal">The Lounge</p>
+      <h2 class="headline reveal d1">A look for every occasion</h2>
+      <p class="sub reveal d2">A glimpse of the range: bridal, party, hair, nails and more.</p>
+      <div class="gallery">
+        <div class="gitem g1 reveal"><b>Bridal &amp; HD Makeup</b></div>
+        <div class="gitem g2 reveal d1"><b>Party Glam</b></div>
+        <div class="gitem g3 reveal d2"><b>Nail Art</b></div>
+        <div class="gitem g4 reveal d1"><b>Hair &amp; Hair Spa</b></div>
+        <div class="gitem g5 reveal d2"><b>Mehendi</b></div>
+        <div class="gitem g6 reveal d3"><b>Pre-Bridal Glow</b></div>
+      </div>
+      <p class="gnote reveal">✎ These tiles are ready for your real studio photos. Send your favourites and they drop straight in.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="reviews-head reveal">
+        <div class="bigrate">5.0</div>
+        <div class="stars" style="font-size:24px">★★★★★</div>
+        <p class="sub" style="margin:10px 0 0">Rated perfect across <b>139 Google reviews</b>. Here's what Panipat says.</p>
+      </div>
+      <div class="rev-grid">
+        <div class="rev card reveal">
+          <span class="q">“</span>
+          <p>Fabulous makeup skills she has. Choose Ritika Beauty Lounge for party makeup, bridal and
+            non-bridal makeup, facial and all. I'm totally satisfied.</p>
+          <div class="who"><div class="av">E</div><div><b>Ekra Khan</b><span>Party &amp; bridal makeup</span></div>
+            <span class="g-src">★ Google</span></div>
+        </div>
+        <div class="rev card reveal d1">
+          <span class="q">“</span>
+          <p>She did my mother's and my makeup for my father's retirement party, and it was flawless. We
+            received lots of compliments. Professional, with a very nice personality.</p>
+          <div class="who"><div class="av">M</div><div><b>Monika</b><span>Family function</span></div>
+            <span class="g-src">★ Google</span></div>
+        </div>
+        <div class="rev card reveal d2">
+          <span class="q">“</span>
+          <p>Even though she was already busy with a booking, she called me in as soon as she arrived. Really
+            kind. The service was relaxing and my hair feels soft and fresh. Highly recommended ❤️</p>
+          <div class="who"><div class="av">D</div><div><b>Diksha Khurana</b><span>Hair &amp; head wash</span></div>
+            <span class="g-src">★ Google</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section>
+    <div class="offer">
+      <div class="inner reveal">
+        <p class="k">Limited-time</p>
+        <h3>Monsoon offer on Hair Spa</h3>
+        <p>Treat your hair this season with our nourishing monsoon hair-spa. Ask about the current price when
+          you book, as slots go fast.</p>
+        <a class="btn btn-gold" href="https://wa.me/919354918002?text=Hi%20Ritika%2C%20I%20saw%20the%20monsoon%20hair%20spa%20offer%20%E2%80%94%20I%27d%20like%20to%20book." target="_blank" rel="noopener">Claim the offer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap visit">
+      <div class="info card reveal">
+        <h3>Visit the Lounge</h3>
+        <div class="vrow"><div class="vi">📍</div><div><b>Studio</b>
+          <p>House No 693/23, Pipal Wali Gali,<br>opp. SBI ATM, Krishanpura, Panipat,<br>Haryana 132103</p></div></div>
+        <div class="vrow"><div class="vi">🕘</div><div><b>Hours</b>
+          <p>Open daily · appointments 9 AM – 7 PM<br>(later, on request, for your big day)</p></div></div>
+        <div class="vrow"><div class="vi">📞</div><div><b>Call / WhatsApp</b>
+          <p><a href="tel:+919354918002">+91 93549 18002</a></p></div></div>
+        <div class="vrow"><div class="vi">💬</div><div><b>Book instantly</b>
+          <p><a href="https://wa.me/919354918002?text=Hi%20Ritika%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Ritika%20Beauty%20Lounge." target="_blank" rel="noopener">Message us on WhatsApp →</a></p></div></div>
+      </div>
+      <a class="mapcard reveal d1" href="https://www.google.com/maps/place/Ritika+Beauty+Lounge/data=!4m7!3m6!1s0x390ddbd2f1aed145:0x1f3636ef1942d4d1!8m2!3d29.3756616!4d76.966242!16s%2Fg%2F11sbl16nwm" target="_blank" rel="noopener" aria-label="Open Ritika Beauty Lounge on Google Maps" style="text-decoration:none">
+        <div class="grid-lines"></div>
+        <div class="pin"><div class="dot"></div></div>
+        <div class="m-b"><b>Get Directions →</b><span>Krishanpura, Panipat · Plus code 9XG8+7F</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fbrand reveal">Ritika Beauty Lounge</div>
+    <div class="fsub reveal">see you at the lounge ✨</div>
+    <div class="fsoc reveal d1">
+      <a href="https://wa.me/919354918002" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.15A11.87 11.87 0 010 5.94 11.94 11.94 0 0111.94 0 11.94 11.94 0 0124 5.95a11.94 11.94 0 01-17.9 10.3L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.04 1.38A9.92 9.92 0 0022 5.95 9.9 9.9 0 0011.94 2 9.92 9.92 0 003.3 16.9l.24.38-1 3.65 4.06-.8z"/></svg></a>
+      <a href="https://www.facebook.com/Ritikagouravgrover/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+      <a href="tel:+919354918002" aria-label="Call">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg></a>
+    </div>
+    <p class="fmeta">
+      House No 693/23, Pipal Wali Gali, opp. SBI ATM, Krishanpura, Panipat 132103 · Open daily<br>
+      © 2026 Ritika Beauty Lounge · Women-owned · Serving Panipat since 2019
+    </p>
+  </footer>
+</main>
+
+<a class="fab" href="https://wa.me/919354918002?text=Hi%20Ritika%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Ritika%20Beauty%20Lounge." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.87 11.87 0 010 5.94 11.94 11.94 0 0111.94 0 11.94 11.94 0 0124 5.95a11.94 11.94 0 01-17.9 10.3L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.04 1.38A9.92 9.92 0 0022 5.95 9.9 9.9 0 0011.94 2 9.92 9.92 0 003.3 16.9l.24.38-1 3.65 4.06-.8z"/><path d="M9.1 6.4c-.22-.5-.46-.5-.67-.51h-.57a1.1 1.1 0 00-.8.37 3.35 3.35 0 00-1.04 2.5 5.83 5.83 0 001.22 3.08c.15.2 2.1 3.36 5.2 4.58 2.57 1 3.1.8 3.66.75.56-.05 1.8-.73 2.05-1.45.26-.7.26-1.32.18-1.44-.07-.13-.27-.2-.57-.35s-1.8-.9-2.07-1c-.28-.1-.48-.15-.68.15-.2.3-.78.99-.95 1.19-.18.2-.35.22-.65.07a8.24 8.24 0 01-2.44-1.5 9.1 9.1 0 01-1.68-2.1c-.18-.3 0-.47.13-.62.13-.13.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52C10.1 8.72 9.4 7 9.1 6.4z"/></svg>
+</a>
+
+<!-- ================= 3D SCENE ================= -->
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+// Scroll-reveal (works even if WebGL fails)
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+// Sticky nav state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled', scrollY>40),{passive:true});
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+try{
+  const THREE = await import('three');
+  const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+
+  const canvas = document.getElementById('bg');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0xf3ddd9, 0.028);
+
+  const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0, 0.4, 9);
+
+  // Soft studio reflections for the metals
+  try{
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  }catch(e){}
+
+  // Lights — warm key, blush fill, gold rim
+  const hemi = new THREE.HemisphereLight(0xffe9ee, 0x71324a, 0.8); scene.add(hemi);
+  const key = new THREE.DirectionalLight(0xfff1e6, 1.5); key.position.set(4,6,6); scene.add(key);
+  const fill = new THREE.PointLight(0xff9fb4, 60, 40); fill.position.set(-6,-2,4); scene.add(fill);
+  const rim = new THREE.PointLight(0xffd98a, 40, 40); rim.position.set(5,-3,-4); scene.add(rim);
+
+  // ---- Materials ----
+  const M = {
+    roseGold: new THREE.MeshStandardMaterial({color:0xc98a86, metalness:1, roughness:.28}),
+    gold:     new THREE.MeshStandardMaterial({color:0xd9b45a, metalness:1, roughness:.24}),
+    wine:     new THREE.MeshStandardMaterial({color:0x6e2440, metalness:.2, roughness:.4}),
+    lip:      new THREE.MeshStandardMaterial({color:0xd63a5f, metalness:.1, roughness:.35, emissive:0x5a0f22, emissiveIntensity:.35}),
+    blush:    new THREE.MeshStandardMaterial({color:0xf2c1cc, metalness:.05, roughness:.5}),
+    cream:    new THREE.MeshStandardMaterial({color:0xf7ead9, metalness:.05, roughness:.6}),
+    glassPink:new THREE.MeshStandardMaterial({color:0xe58aa0, metalness:0, roughness:.15, transparent:true, opacity:.55}),
+    mirror:   new THREE.MeshStandardMaterial({color:0xffffff, metalness:1, roughness:.05}),
+    powder:   new THREE.MeshStandardMaterial({color:0xe8a7b4, metalness:0, roughness:.9}),
+  };
+  const shadeMats = [0xd63a5f,0xb5567f,0x8a4b8f,0xc98a86,0xd9b45a,0xe58aa0].map(c=>
+    new THREE.MeshStandardMaterial({color:c, metalness:.15, roughness:.45, emissive:c, emissiveIntensity:.15}));
+
+  const scatterGroup = new THREE.Group(); scene.add(scatterGroup);
+
+  // ---- Object builders (stylised cosmetics from primitives) ----
+  function lipstick(){
+    const g = new THREE.Group();
+    const caseMesh = new THREE.Mesh(new THREE.CylinderGeometry(.28,.3,1.1,32), M.roseGold);
+    const collar = new THREE.Mesh(new THREE.CylinderGeometry(.31,.31,.12,32), M.gold); collar.position.y=.6;
+    const bullet = new THREE.Group();
+    const stick = new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.5,32), M.lip); stick.position.y=.25;
+    const tip = new THREE.Mesh(new THREE.CylinderGeometry(.05,.24,.28,32), M.lip); tip.position.y=.62; tip.rotation.z=.25;
+    bullet.add(stick,tip); bullet.position.y=.4; bullet.userData.min=-.35; bullet.userData.max=.4;
+    g.add(caseMesh,collar,bullet); g.userData.bullet=bullet;
+    return g;
+  }
+  function compact(){
+    const g = new THREE.Group();
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(.62,.62,.16,40), M.roseGold);
+    const pan = new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.08,40), M.powder); pan.position.y=.1;
+    const lid = new THREE.Group();
+    const lidDisc = new THREE.Mesh(new THREE.CylinderGeometry(.62,.62,.1,40), M.roseGold);
+    const mir = new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.02,40), M.mirror); mir.position.y=-.06;
+    lid.add(lidDisc,mir); lid.position.set(0,.08,-.62); lid.rotation.x=-.05;
+    lid.userData.closed=-.05; lid.userData.open=-2.25;
+    g.add(base,pan,lid); g.userData.lid=lid;
+    return g;
+  }
+  function brush(){
+    const g = new THREE.Group();
+    const handle = new THREE.Mesh(new THREE.CylinderGeometry(.08,.11,1.1,24), M.wine); handle.position.y=-.35;
+    const ferrule = new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.28,24), M.gold); ferrule.position.y=.32;
+    const bristles = new THREE.Mesh(new THREE.ConeGeometry(.2,.55,28), M.blush); bristles.position.y=.72;
+    g.add(handle,ferrule,bristles); return g;
+  }
+  function polish(){
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(.3,.34,.6,10), M.glassPink); body.position.y=-.1;
+    const shoulder = new THREE.Mesh(new THREE.CylinderGeometry(.14,.3,.2,10), M.glassPink); shoulder.position.y=.28;
+    const cap = new THREE.Mesh(new THREE.CylinderGeometry(.14,.14,.5,24), M.gold); cap.position.y=.62;
+    g.add(body,shoulder,cap); return g;
+  }
+  function perfume(){
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(.6,.7,.32), M.glassPink);
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(.1,.12,.16,20), M.gold); neck.position.y=.44;
+    const cap = new THREE.Mesh(new THREE.SphereGeometry(.16,24,24), M.roseGold); cap.position.y=.62;
+    g.add(body,neck,cap); return g;
+  }
+  function palette(){
+    const g = new THREE.Group();
+    const tray = new THREE.Mesh(new THREE.BoxGeometry(1.3,.14,.9), M.roseGold);
+    for(let i=0;i<6;i++){
+      const pan = new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,.1,24), shadeMats[i]);
+      pan.position.set(-.45+(i%3)*.45, .1, i<3?-.2:.2);
+      g.add(pan);
+    }
+    g.add(tray); return g;
+  }
+
+  const builders=[lipstick,compact,brush,polish,perfume,palette,brush,lipstick];
+  const items=[];
+  const isMobile = innerWidth<760;
+  builders.forEach((b,i)=>{
+    const o=b();
+    const a=(i/builders.length)*Math.PI*2;
+    // scattered (spread) home
+    o.userData.scatter=new THREE.Vector3(Math.cos(a)*(4.6+ (i%2)*1.4), Math.sin(a*1.3)*2.6 + (i%3-1)*.8, -3 + Math.sin(a)*2.2);
+    // arranged vanity cluster
+    o.userData.arranged=new THREE.Vector3((i-3.5)*.9, -1 + Math.sin(i)*.5, .3 + (i%2)*.5);
+    o.userData.spin=new THREE.Vector3((Math.random()-.5)*.4,(Math.random()-.5)*.7,(Math.random()-.5)*.3);
+    o.userData.phase=Math.random()*Math.PI*2;
+    const s=isMobile?.82:1;
+    o.scale.setScalar((.8+Math.random()*.5)*s);
+    o.position.copy(o.userData.scatter);
+    scatterGroup.add(o); items.push(o);
+  });
+
+  // ---- Gold shimmer particles ----
+  function discTexture(){
+    const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d');
+    const g=x.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(255,240,200,1)'); g.addColorStop(.4,'rgba(230,200,120,.6)'); g.addColorStop(1,'rgba(230,200,120,0)');
+    x.fillStyle=g; x.fillRect(0,0,64,64); return new THREE.CanvasTexture(c);
+  }
+  const PN = reduce?300:(isMobile?600:1400);
+  const pg = new THREE.BufferGeometry(); const pp=new Float32Array(PN*3);
+  for(let i=0;i<PN;i++){ pp[i*3]=(Math.random()-.5)*22; pp[i*3+1]=(Math.random()-.5)*16; pp[i*3+2]=(Math.random()-.5)*14; }
+  pg.setAttribute('position', new THREE.BufferAttribute(pp,3));
+  const dust = new THREE.Points(pg, new THREE.PointsMaterial({
+    size:.09, map:discTexture(), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, color:0xffd98a, opacity:.9}));
+  scene.add(dust);
+
+  // ---- Falling rose petals ----
+  function petalTexture(){
+    const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d');
+    x.fillStyle='rgba(0,0,0,0)'; x.fillRect(0,0,64,64);
+    const g=x.createRadialGradient(32,20,2,32,34,30);
+    g.addColorStop(0,'rgba(255,210,222,.95)'); g.addColorStop(1,'rgba(210,120,145,.15)');
+    x.fillStyle=g; x.beginPath(); x.ellipse(32,32,16,26,0,0,7); x.fill(); return new THREE.CanvasTexture(c);
+  }
+  const petalMat=new THREE.MeshBasicMaterial({map:petalTexture(), transparent:true, depthWrite:false, side:THREE.DoubleSide});
+  const petals=[]; const PET=reduce?0:(isMobile?10:22);
+  for(let i=0;i<PET;i++){
+    const p=new THREE.Mesh(new THREE.PlaneGeometry(.5,.7), petalMat);
+    p.position.set((Math.random()-.5)*16, Math.random()*12-6, (Math.random()-.5)*8);
+    p.userData={sp:.006+Math.random()*.012, sw:Math.random()*Math.PI*2, rot:(Math.random()-.5)*.03};
+    scene.add(p); petals.push(p);
+  }
+
+  // ---- Scroll + pointer state ----
+  let targetScroll=0, scroll=0, px=0,py=0,tpx=0,tpy=0;
+  const maxScroll=()=>Math.max(1, document.body.scrollHeight - innerHeight);
+  addEventListener('scroll',()=>{ targetScroll=scrollY/maxScroll(); },{passive:true});
+  addEventListener('pointermove',e=>{ tpx=(e.clientX/innerWidth-.5); tpy=(e.clientY/innerHeight-.5); },{passive:true});
+  const ease=t=>t*t*(3-2*t);
+  const smooth=(a,b,e)=>(b-a)>1e-5||(a-b)>1e-5?a+(b-a)*e:b;
+
+  const clock=new THREE.Clock(); let running=true;
+  document.addEventListener('visibilitychange',()=>{ running=!document.hidden; if(running)animate(); });
+
+  function animate(){
+    if(!running) return;
+    requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    scroll=smooth(scroll,targetScroll,.06);
+    px=smooth(px,tpx,.05); py=smooth(py,tpy,.05);
+    const p=ease(Math.min(1,scroll*1.15));
+
+    // camera glides in + follows pointer
+    camera.position.x = px*1.4;
+    camera.position.y = 0.4 - py*0.8 - p*0.6;
+    camera.position.z = 9 - p*3.4;
+    camera.lookAt(0, -p*0.4, 0);
+    scatterGroup.rotation.y = scroll*0.6 + t*0.02;
+
+    items.forEach((o,i)=>{
+      const home=new THREE.Vector3().lerpVectors(o.userData.scatter,o.userData.arranged,p);
+      const bob=reduce?0:Math.sin(t*0.8+o.userData.phase)*0.18;
+      o.position.set(home.x, home.y+bob, home.z);
+      if(!reduce){
+        o.rotation.x += o.userData.spin.x*0.01;
+        o.rotation.y += o.userData.spin.y*0.01;
+        o.rotation.z += o.userData.spin.z*0.01;
+      }
+      // lipstick rises, compact opens as you scroll
+      if(o.userData.bullet){ const b=o.userData.bullet; const k=ease(Math.min(1,Math.max(0,(p-.15)/.5)));
+        b.position.y = b.userData.min+(b.userData.max-b.userData.min)*k; }
+      if(o.userData.lid){ const l=o.userData.lid; const k=ease(Math.min(1,Math.max(0,(p-.25)/.5)));
+        l.rotation.x = l.userData.closed+(l.userData.open-l.userData.closed)*k; }
+    });
+
+    if(!reduce){
+      dust.rotation.y = t*0.02; dust.rotation.x = Math.sin(t*0.1)*0.05;
+      petals.forEach(pt=>{ pt.position.y-=pt.userData.sp; pt.userData.sw+=0.02;
+        pt.position.x+=Math.sin(pt.userData.sw)*0.004; pt.rotation.z+=pt.userData.rot; pt.rotation.y+=0.01;
+        if(pt.position.y<-7){ pt.position.y=7; pt.position.x=(Math.random()-.5)*16; } });
+    }
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  addEventListener('resize',()=>{
+    camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  },{passive:true});
+
+}catch(err){
+  // WebGL unavailable — the CSS gradient background stays; content is fully readable.
+  console.warn('3D scene skipped:', err);
+}
+</script>
+</body>
+</html>
