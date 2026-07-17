@@ -704,7 +704,7 @@ try{
     const p=ease(Math.min(1,scroll*1.15));
 
     // camera glides in + follows pointer (fit pulls back on portrait/mobile)
-    const fit=Math.min(2.6,Math.max(1,1.4/camera.aspect));
+    const fit=Math.min(4,Math.max(1,1.9/camera.aspect));
     camera.position.x = px*1.4;
     camera.position.y = 0.4 - py*0.8 - p*0.6;
     camera.position.z = (9 - p*3.4)*fit;
