@@ -703,11 +703,12 @@ try{
     px=smooth(px,tpx,.05); py=smooth(py,tpy,.05);
     const p=ease(Math.min(1,scroll*1.15));
 
-    // camera glides in + follows pointer (fit pulls back on portrait/mobile)
-    const fit=Math.min(4,Math.max(1,1.9/camera.aspect));
+    // responsive: shrink the cosmetics group on narrow screens (stays close & unfogged)
+    const ms=Math.min(1,Math.max(0.28,camera.aspect/1.7));
+    scatterGroup.scale.setScalar(ms);
     camera.position.x = px*1.4;
     camera.position.y = 0.4 - py*0.8 - p*0.6;
-    camera.position.z = (9 - p*3.4)*fit;
+    camera.position.z = 9 - p*3.4;
     camera.lookAt(0, -p*0.4, 0);
     scatterGroup.rotation.y = scroll*0.6 + t*0.02;
 
